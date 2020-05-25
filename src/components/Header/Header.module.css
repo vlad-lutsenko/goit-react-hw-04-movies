@@ -1,0 +1,26 @@
+header {
+  border-bottom: 4px solid #b8b8b8;
+  margin-bottom: 20px;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.navigation li {
+  margin-right: 20px;
+}
+
+.navLink {
+  color: black;
+  font-family: sans-serif;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.active {
+  color: red;
+}
