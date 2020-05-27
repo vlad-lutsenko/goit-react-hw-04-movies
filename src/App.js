@@ -23,7 +23,7 @@ function App() {
         <Switch>
           <Route exact path={route.HOME} component={HomePage} />
           <Route path={route.MOVIES} component={Movies} />
-          <Route path="/:anything" component={NotFound} />
+          <Route component={NotFound} />
         </Switch>
       </Suspense>
     </>
