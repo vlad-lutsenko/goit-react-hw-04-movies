@@ -1,6 +1,7 @@
+/*core */
 import React, { useState, useEffect } from "react";
-import { getMovieCast } from "../../helpers/requestMaker";
-import { profileUrl } from "../../helpers/requestMaker";
+/*instruments */
+import { getMovieCast, profileUrl } from "../../helpers/requestMaker";
 import styles from "./Cast.module.css";
 
 const Cast = (props) => {

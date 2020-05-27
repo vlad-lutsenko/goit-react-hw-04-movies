@@ -1,11 +1,15 @@
+/*core */
 import React, { useState, useEffect, Suspense, lazy } from "react";
 import { Switch, Route, Link, useHistory, useLocation } from "react-router-dom";
-import { getMoviesList } from "../../helpers/requestMaker";
+/*instruments*/
 import queryString from "query-string";
+import { getMoviesList } from "../../helpers/requestMaker";
 import styles from "./Movies.module.css";
-
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+/* components */
 const MovieDetailsPage = lazy(() =>
-  import("../../components/MovieDetailsPage/MovieDetailsPage")
+  import("../MovieDetailsPage/MovieDetailsPage")
 );
 
 const Movies = () => {
@@ -39,7 +43,7 @@ const Movies = () => {
   }, [location.search]);
 
   return (
-    <Suspense fallback={<p>loading</p>}>
+    <Suspense fallback={<Loader type="TailSpin" color="#red" />}>
       <Switch>
         <Route path="/movies/:movieId" component={MovieDetailsPage} />
         <Route

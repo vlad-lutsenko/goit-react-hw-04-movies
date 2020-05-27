@@ -1,12 +1,19 @@
+/*core */
 import React, { useState, useEffect, lazy, Suspense } from "react";
-import { Link, Switch, Route } from "react-router-dom";
-import { useLocation, useHistory } from "react-router-dom";
+import { Link, Switch, Route, useLocation, useHistory } from "react-router-dom";
+/* instruments */
 import { getMovieInfo } from "../../helpers/requestMaker";
 import { posterUrl } from "../../helpers/requestMaker";
 import styles from "./MovieDetailsPage.module.css";
-
-const Cast = lazy(() => import("../Cast/Cast"));
-const Reviews = lazy(() => import("../Reviews/Reviews"));
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+/*components */
+const Cast = lazy(() =>
+  import("../../components/Cast/Cast" /* webpackChunkName: "Cast" */)
+);
+const Reviews = lazy(() =>
+  import("../../components/Reviews/Reviews" /* webpackChunkName: "Reviews" */)
+);
 
 const MovieDetailsPage = (props) => {
   const [movieInfo, setMovieInfo] = useState({});
@@ -103,7 +110,7 @@ const MovieDetailsPage = (props) => {
                 </Link>
               </li>
             </ul>
-            <Suspense fallback={<p>loading...</p>}>
+            <Suspense fallback={<Loader type="TailSpin" color="#red" />}>
               <Switch>
                 <Route path={`${props.match.path}/cast`} component={Cast} />
                 <Route

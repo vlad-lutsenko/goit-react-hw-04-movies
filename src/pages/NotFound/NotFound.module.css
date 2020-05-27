@@ -1,0 +1,8 @@
+.notFound {
+  background-image: url(./image/404_Error.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: auto;
+  width: 85vw;
+  height: 85vh;
+}

@@ -1,19 +1,29 @@
+/* Core */
 import React, { Suspense, lazy } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+/*instruments */
+import route from "./helpers/route";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+/* Components */
 import Header from "./components/Header/Header";
-import HomePage from "./containers/HomePage/HomePage";
+import HomePage from "./pages/HomePage/HomePage";
 
-const Movies = lazy(() => import("./containers/Movies/Movies"));
-
+const Movies = lazy(() =>
+  import("./pages/Movies/Movies" /* webpackChunkName: "Movies" */)
+);
+const NotFound = lazy(() =>
+  import("./pages/NotFound/NotFound" /* webpackChunkName: "NotFound" */)
+);
 function App() {
   return (
     <>
       <Header />
-      <Suspense fallback={<p>loading</p>}>
+      <Suspense fallback={<Loader type="TailSpin" color="#red" />}>
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/movies" component={Movies} />
-          <Redirect to="/" />
+          <Route exact path={route.HOME} component={HomePage} />
+          <Route path={route.MOVIES} component={Movies} />
+          <Route component={NotFound} />
         </Switch>
       </Suspense>
     </>

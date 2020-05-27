@@ -1,4 +1,6 @@
+/*core */
 import React, { useState, useEffect } from "react";
+/*instruments */
 import { getMovieReviews } from "../../helpers/requestMaker";
 
 const Reviews = (props) => {
@@ -20,7 +22,7 @@ const Reviews = (props) => {
             <li key={id}>
               <h5>Author: {author}</h5>
               <p>{content}</p>
-              <a href={url} target="_blank" rel="noreferrer">
+              <a href={url} target="_blank" rel="noopener noreferrer">
                 Source
               </a>
             </li>
